@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="manager" namespace="/manager" extends="struts-default">
+		
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+		
+		<!-- 后台登陆页 -->
+        <action name="admin*" class="adminLoginPageAction" method="{1}">
+        	<result name="success">/WEB-INF/admin/login.jsp</result>
+        	<result name="login">/WEB-INF/admin/login.jsp</result>
+        </action>
+        
+        <!-- 后台密码验证导航页-->
+        <action name="loginVerify" class="adminLoginVerifyAction">
+        	<!-- 失败 --><result name="error">/WEB-INF/admin/login.jsp</result>
+        	<!-- 成功 --><result name="success" type="redirectAction">frame</result>
+        </action> 
+        
+        <!-- 管理员注销界面 -->
+        <action name="adminlogout" class="adminLogoutAction">
+        	<result type="redirectAction">admin</result>
+        </action>
+        
+        <!-- 后台管理界面 -->
+        <action name="frame*" class="adminFrameAction" method="{1}">
+        	<result>/WEB-INF/admin/index.jsp</result>
+        	<!-- 欢迎页 --><result name="welcome">/WEB-INF/admin/welcome.jsp</result>
+        	<!-- 用户列表 --><result name="userlist">/WEB-INF/admin/userlist.jsp</result>
+        	<!-- 用户删除 --><result name="userdelete" type="redirectAction">frameuserlist</result>
+        	<!-- 文章列表 --><result name="articlelist">/WEB-INF/admin/articlelist.jsp</result>
+        	<!-- 分类添加 --><result name="typeadd">/WEB-INF/admin/typeadd.jsp</result>
+        	<!-- 分类列表 --><result name="typelist">/WEB-INF/admin/typelist.jsp</result>
+        	<!-- 用户拉黑 --><result name="userblacklist" type="redirectAction">frameuserlist</result>
+        	<!-- 用户白名单 --><result name="userwhitelist" type="redirectAction">frameuserlist</result>
+        	<!-- 用户信息修改 --><result name="usermodify" type="redirectAction">frameuserlist</result>
+        	<!-- 类型添加 --><result name="typeaddrouter" type="redirectAction">frametypelist</result>
+        </action>
+        
+        <!-- 后台操作 -->
+        <action name="adminmanage*" class="adminManageUserAction" method="{1}">
+        	<result name="deleteuser">/WEB-INF/admin/result.jsp</result>
+        </action>
+        
+        <!-- 用户列表管理界面 -->
+        <action name="adminmanage*" class="adminManageUserAction" method="{1}">
+        	<result name="success">/WEB-INF/admin/userlist.jsp</result>
+        	<!-- 获取用户列表 --><result name="userlist">/WEB-INF/admin/userlist.jsp</result>
+        </action>
+
+		<!-- 文章类型管理  李鹏鹏-->
+		<action name="articleType*" class="articleTypeAction" method="{1}">
+			<!-- 文章类型更新成功 -->
+			<result name="update" type="redirectAction">frametypelist</result>
+			<!-- 文章类型更新失败 -->
+		</action>
+
+    </package>
+</struts>
