@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <!-- struts.xml： Struts2的 对象池创建工厂配置 -->
+    <constant name="struts.objectFactory" value="spring" />
+    
+    <!-- 默认主页action -->
+    <package name="default" namespace="/" extends="struts-default">
+    	 <default-action-ref name="index" /> 
+    	<action name="home*" class="homeAction" method="{1}">
+    		<result name="index">/WEB-INF/index.jsp</result>
+    		<result name="success">/WEB-INF/index.jsp</result>
+    		<result name="delopypage">/WEB-INF/jsp/delopyArticle.jsp</result>
+    	</action>
+    	<action name="index" class="homeAction" >
+    		<result name="success">/WEB-INF/index.jsp</result>
+    	</action>
+    </package>
+    
+    <!-- 管理员配置文件By 武文良 -->
+    <include file="wwl_struts_manager.xml"/>
+	<!-- 用户登录配置文件By 武文良/李鹏鹏 -->
+    <include file="wwl_struts_user.xml"/>
+    <!-- 配置文件 段吉贵 -->
+    <include file="djg_struts_front.xml"/>
+    <include file="djg_struts_manager.xml"/>
+    
+    <!--  -->
+    
+
+    <!-- Add packages here -->
+
+</struts>

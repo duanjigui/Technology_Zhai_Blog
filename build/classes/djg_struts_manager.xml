@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="ArticleManage" namespace="/manager" extends="struts-default">
+
+
+		<global-results>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="error" />
+		</global-exception-mappings>
+		<!-- 文章管理action映射 -->
+		<action name="article*" class="articleManage" method="{1}">
+			<result name="query">/WEB-INF/admin/articlelist.jsp</result>
+			<result name="add">/WEB-INF/admin/articlelist.jsp</result>
+			<result name="update" type="redirectAction">articlequery</result>
+			<result name="delete" type="redirectAction">articlequery</result>
+		</action>
+
+	</package>
+</struts>

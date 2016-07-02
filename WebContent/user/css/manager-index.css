@@ -1,0 +1,66 @@
+	.header {
+				height: 50px;
+			}
+			
+			footer {
+				margin-top: -15px;
+				height: 50px;
+			}
+			
+			footer>.footer-words {
+				padding-top: 15px;
+				color: white;
+			}
+			
+			a {
+				cursor: pointer;
+			}
+			
+			#mainFrame>iframe {
+				margin-top: 15px;
+				height: 750px;
+			}
+			
+			#higoMenu {
+				display: none;
+			}
+			
+			#collegeVoice {
+				display: none;
+			}
+			
+			#olddriverMenu {
+				display: none;
+			}
+			.list-group-item{
+				margin-bottom: 5px;
+				background-color: ghostwhite;
+				cursor: pointer;
+			}
+			.list-group-item i {
+				margin-left: 80px;
+			}
+			
+			#menulist{
+				padding-top: 20px;
+			}
+			.first-title {
+				cursor:auto;
+			}
+			.first-title-h3 {
+				color: orange;
+				margin: 2px;
+			}
+			.second-title  h3 {
+				margin: 10px;
+			}
+			a{
+				color: dodgerblue;
+				
+			}
+			a:hover{
+				color: red;
+			}
+			.navbar-inverse .navbar-brand {
+			    color: #fff;
+			}
