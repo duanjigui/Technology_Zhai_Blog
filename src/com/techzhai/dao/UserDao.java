@@ -29,9 +29,4 @@ public interface UserDao {
 	public String userRegist(String u_nickname, String userpwd, String u_email, String edu_background);
 	//根据用户姓名获取用户信息  sanbel
 	public UserBean fetchUserIdByname(String name);
-	
-	/**
-	 * fetchUserInfo
-	 */
-	public List<UserBean> fetchUserInfo();
 }

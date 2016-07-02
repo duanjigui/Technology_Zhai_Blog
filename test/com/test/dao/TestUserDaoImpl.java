@@ -29,8 +29,4 @@ public class TestUserDaoImpl {
 		System.out.println(new UserService().userInfoModify(19, "卖女孩的DADA火柴", "1210812591@qq.com", "123123", "本科"));
 	}
 	
-	@Test
-	public void testGetAllUsers() {
-		System.out.println(new UserDaoImpl().fetchUserInfo().size());
-	}
 }

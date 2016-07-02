@@ -14,8 +14,8 @@
     <package name="default" namespace="/" extends="struts-default">
     	 <default-action-ref name="index" /> 
     	<action name="home*" class="homeAction" method="{1}">
-    		<result name="index">/WEB-INF/index.jsp</result>
-    		<result name="success">/WEB-INF/index.jsp</result>
+    		<result name="index" type="redirectAction">index</result>
+    		<result name="success" type="redirectAction">index</result>
     		<result name="delopypage">/WEB-INF/jsp/delopyArticle.jsp</result>
     	</action>
     	<action name="index" class="homeAction" >

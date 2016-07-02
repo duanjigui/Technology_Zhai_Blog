@@ -1,5 +1,13 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.techzhai.model.ArticleBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
+<%
+	//获取后台文章列表
+	List<ArticleBean> articleBeans = (List<ArticleBean>)session.getAttribute("articleBeans");
+%>
 <!DOCTYPE html>
 <html>
 
@@ -21,118 +29,43 @@
 					<span class="glyphicon glyphicon-home words"></span>
 					<span class="words">&nbsp;博海畅游</span>
 					<hr />
+					
 				</div>
 				<!--渤海畅游文章列表开始-->
+				
 				<div class="article-list-content">
+					<%
+					if (articleBeans != null && articleBeans.size() > 0) {
+		
+						for (ArticleBean articleBean : articleBeans) {
+					%>
 					<!--单篇文章的样式开始-->
 					<div class="article">
 						<span class="article-icon glyphicon glyphicon-star"></span>
-						<a href="#"><span class="article-title">听上的星星参北斗啊伊尔哟亚麻伊尔哟微风微风</span></a>
+						<a href="#"><span class="article-title"><%=articleBean.getW_title() %></span></a>
 						<!--上传者信息-->
 						<div class="article-owner">
 							<i class="glyphicon glyphicon-user"></i>
-							<span class="">天天向上</span>
+							<span class=""><%=articleBean.getW_publisher() %></span>
 						</div>
 						<!--上传日期-->
 						<div class="article-date">
 							<i class="glyphicon glyphicon-time"></i>
-							<span class="">2016-04-12</span>
+							<span class=""><%=new SimpleDateFormat("yyyy-MM-dd").format(articleBean.getW_publishtime())%></span>
 						</div>
 						<!--阅读次数-->
 						<div class="article-times">
 							<i class="glyphicon glyphicon-play-circle"></i>
-							<span class="">12345</span>
+							<span class=""><%=articleBean.getW_readnum() %></span>
 						</div>
 					</div>
 					<!--单篇文章的样式结束-->
+					<% } %>
+				<% }  %>
+					
 
-					<!--单篇文章的样式开始-->
-					<div class="article">
-						<span class="article-icon glyphicon glyphicon-star"></span>
-						<a href="#"><span class="article-title">听上的星星参北斗啊伊尔哟亚麻伊尔哟微风微风</span></a>
-						<!--上传者信息-->
-						<div class="article-owner">
-							<i class="glyphicon glyphicon-user"></i>
-							<span class="">天天向上</span>
-						</div>
-						<!--上传日期-->
-						<div class="article-date">
-							<i class="glyphicon glyphicon-time"></i>
-							<span class="">2016-04-12</span>
-						</div>
-						<!--阅读次数-->
-						<div class="article-times">
-							<i class="glyphicon glyphicon-play-circle"></i>
-							<span class="">12345</span>
-						</div>
-					</div>
-					<!--单篇文章的样式结束-->
-
-					<!--单篇文章的样式开始-->
-					<div class="article">
-						<span class="article-icon glyphicon glyphicon-star"></span>
-						<a href="#"><span class="article-title">听上的星星参北斗啊伊尔哟亚麻伊尔哟微风微风</span></a>
-						<!--上传者信息-->
-						<div class="article-owner">
-							<i class="glyphicon glyphicon-user"></i>
-							<span class="">天天向上</span>
-						</div>
-						<!--上传日期-->
-						<div class="article-date">
-							<i class="glyphicon glyphicon-time"></i>
-							<span class="">2016-04-12</span>
-						</div>
-						<!--阅读次数-->
-						<div class="article-times">
-							<i class="glyphicon glyphicon-play-circle"></i>
-							<span class="">12345</span>
-						</div>
-					</div>
-					<!--单篇文章的样式结束-->
-
-					<!--单篇文章的样式开始-->
-					<div class="article">
-						<span class="article-icon glyphicon glyphicon-star"></span>
-						<a href="#"><span class="article-title">听上的星星参北斗啊伊尔哟亚麻伊尔哟微风微风</span></a>
-						<!--上传者信息-->
-						<div class="article-owner">
-							<i class="glyphicon glyphicon-user"></i>
-							<span class="">天天向上</span>
-						</div>
-						<!--上传日期-->
-						<div class="article-date">
-							<i class="glyphicon glyphicon-time"></i>
-							<span class="">2016-04-12</span>
-						</div>
-						<!--阅读次数-->
-						<div class="article-times">
-							<i class="glyphicon glyphicon-play-circle"></i>
-							<span class="">12345</span>
-						</div>
-					</div>
-					<!--单篇文章的样式结束-->
-
-					<!--单篇文章的样式开始-->
-					<div class="article">
-						<span class="article-icon glyphicon glyphicon-star"></span>
-						<a href="#"><span class="article-title">听上的星星参北斗啊伊尔哟亚麻伊尔哟微风微风</span></a>
-						<!--上传者信息-->
-						<div class="article-owner">
-							<i class="glyphicon glyphicon-user"></i>
-							<span class="">天天向上</span>
-						</div>
-						<!--上传日期-->
-						<div class="article-date">
-							<i class="glyphicon glyphicon-time"></i>
-							<span class="">2016-04-12</span>
-						</div>
-						<!--阅读次数-->
-						<div class="article-times">
-							<i class="glyphicon glyphicon-play-circle"></i>
-							<span class="">12345</span>
-						</div>
-					</div>
-					<!--单篇文章的样式结束-->
+				<s:debug></s:debug>
+					
 					
 					<!--单篇文章的样式开始-->
 					<div class="article">
@@ -155,27 +88,7 @@
 						</div>
 					</div>
 					<!--单篇文章的样式结束-->
-					<!--单篇文章的样式开始-->
-					<div class="article">
-						<span class="article-icon glyphicon glyphicon-star"></span>
-						<a href="#"><span class="article-title">听上的星星参北斗啊伊尔哟亚麻伊尔哟微风微风</span></a>
-						<!--上传者信息-->
-						<div class="article-owner">
-							<i class="glyphicon glyphicon-user"></i>
-							<span class="">天天向上</span>
-						</div>
-						<!--上传日期-->
-						<div class="article-date">
-							<i class="glyphicon glyphicon-time"></i>
-							<span class="">2016-04-12</span>
-						</div>
-						<!--阅读次数-->
-						<div class="article-times">
-							<i class="glyphicon glyphicon-play-circle"></i>
-							<span class="">12345</span>
-						</div>
-					</div>
-					<!--单篇文章的样式结束-->
+					
 					<!--单篇文章的样式开始-->
 					<div class="article">
 						<span class="article-icon glyphicon glyphicon-star"></span>
@@ -241,6 +154,9 @@
 						</div>
 					</div>
 					<!--单篇文章的样式结束-->
+					
+			
+				
 				</div>
 				<!--渤海畅游文章列表结束-->
 				<!--分页部分开始 -->
