@@ -1,4 +1,6 @@
 <%@page import="com.techzhai.model.UserBean"%>
+<%@page import="com.techzhai.model.ArticleTypeBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -7,6 +9,8 @@
 	String u_email;
 	//通过邮箱获取该登陆用户的全部信息
 	UserBean userBean = (UserBean)session.getAttribute("loginUserBean");
+	//获取后台板块列表
+	List<ArticleTypeBean> articleTypeBeans = (List<ArticleTypeBean>)session.getAttribute("articleTypeBeans");
 	
 %>
 <!DOCTYPE html>
@@ -16,7 +20,7 @@
 		<meta charset="utf-8" />
 		<title>科技宅博客论坛</title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
 		<link rel="stylesheet" type="text/css" href="css/header.css"/>
 		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
@@ -35,17 +39,18 @@
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="#">首页</a></li>
+						<li><a href="home">首页</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">版块列表<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Java</a></li>
+								<%
+								if (articleTypeBeans != null && articleTypeBeans.size() > 0) {
+					
+									for (ArticleTypeBean articleTypeBean : articleTypeBeans) {
+								%>
+								<li><a href="homearticlesbytypeid?t_id=<%=articleTypeBean.getT_id()%>"><%=articleTypeBean.getT_typename() %></a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#">PHP</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">C#</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">JavaScript</a></li>
+								<%}} %>
 							</ul>
 						</li>
 					</ul>

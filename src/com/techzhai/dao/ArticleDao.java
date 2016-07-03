@@ -20,5 +20,7 @@ public interface ArticleDao {
 	
 	public ArticleBean fetchArticleById(int articleId); //根据文章id查看文章信息
 	
+	public List<ArticleBean> fetchArticelistByTypeId(int type_id);		  //通过文章类型id获取对应类型下所有文章
+	
 
 }

@@ -66,11 +66,4 @@ public class UserService {
 		userDao = new UserDaoImpl();
 		return userDao.userRegist(u_nickname, userpwd, u_email, edu_background);
 	}
-	
-	/**
-	 * fetchUserInfo前台获取用户信息
-	 */
-	public List<UserBean> fetchUserInfo() {
-		return userDao.fetchUserInfo();
-	}
 }

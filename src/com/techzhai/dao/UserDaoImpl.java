@@ -166,10 +166,6 @@ public class UserDaoImpl implements UserDao {
 		return "添加成功";
 	}
 	
-	@Override
-	public List<UserBean> fetchUserInfo() {
-		return this.fetchAllUserList();
-	}
 	
 	//根据name获取用户信息(id)
 	@Override
@@ -197,5 +193,6 @@ public class UserDaoImpl implements UserDao {
 		 return userBean;
 		
 	}
+
 	
 }

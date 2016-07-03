@@ -50,6 +50,16 @@ public class ArticleDaoImpl implements ArticleDao {
 		session.close();
 		return list;
 	}
+	
+	public List<ArticleBean> fetchArticleRecommend() {
+		Session session=sessionFactory.openSession();
+		//Session session = Hibernate4Utils.getSessionFactory().openSession();
+		Query query=session.createQuery("from ArticleBean where w_id<10 order by w_id desc");
+		@SuppressWarnings("unchecked")
+		List<ArticleBean> list=(List<ArticleBean>)query.list();
+		session.close();
+		return list;
+	}
 
 	@Override
 	public void deletArticle(ArticleBean articleBean) {
@@ -91,8 +101,20 @@ public class ArticleDaoImpl implements ArticleDao {
 		return articleBean;
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(new ArticleDaoImpl().fetchAllArticle().size());
-	}
-
+	//根据类型id获取类型下的文章列表
+		@Override
+		public List<ArticleBean> fetchArticelistByTypeId(int type_id) {
+			sessionFactory=	Hibernate4Utils.getSessionFactory();
+			Session session=	sessionFactory.openSession();
+			Query query=	session.createQuery("from ArticleBean where w_articletype=?");
+			query.setInteger(0, type_id);
+			//获取结果
+			List<ArticleBean> articleBeans = query.list();
+			session.close();
+			return articleBeans;
+		}
+		
+		public static void main(String[] args) {
+			System.out.println(new ArticleDaoImpl().fetchArticelistByTypeId(1).size());
+		}
 }

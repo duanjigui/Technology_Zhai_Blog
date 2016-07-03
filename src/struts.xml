@@ -14,9 +14,17 @@
     <package name="default" namespace="/" extends="struts-default">
     	 <default-action-ref name="index" /> 
     	<action name="home*" class="homeAction" method="{1}">
-    		<result name="index">/WEB-INF/index.jsp</result>
-    		<result name="success">/WEB-INF/index.jsp</result>
+    		<result name="index" type="redirectAction">index</result>
+    		<result name="success" type="redirectAction">index</result>
     		<result name="delopypage">/WEB-INF/jsp/delopyArticle.jsp</result>
+    		<!-- 文章展示页 -->
+    		<result name="showarticle" type="redirectAction">homeshowarticlebyid</result>
+    		<!-- 通过id返回文章展示页 -->
+    		<result name="showarticlebyid">/WEB-INF/article.jsp</result>
+    		<!-- 类型展示页 -->
+    		<result name="showarticletype" type="redirectAction">homearticlesbytypeid</result>
+    		<!-- 根据类型id获取对应类型下的文章列表 -->
+    		<result name="articlesbytypeid">/WEB-INF/articlelist.jsp</result>
     	</action>
     	<action name="index" class="homeAction" >
     		<result name="success">/WEB-INF/index.jsp</result>
