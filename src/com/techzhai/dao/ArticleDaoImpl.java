@@ -55,7 +55,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	public List<ArticleBean> fetchArticleRecommend() {
 		Session session=sessionFactory.openSession();
 		//Session session = Hibernate4Utils.getSessionFactory().openSession();
-		Query query=session.createQuery("from ArticleBean where w_id<10 order by w_id desc");
+		Query query=session.createQuery("from ArticleBean where w_id<13 order by w_id desc");
 		@SuppressWarnings("unchecked")
 		List<ArticleBean> list=(List<ArticleBean>)query.list();
 		session.close();
