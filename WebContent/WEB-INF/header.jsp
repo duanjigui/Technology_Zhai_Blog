@@ -20,7 +20,11 @@
 		<meta charset="utf-8" />
 		<title>科技宅博客论坛</title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-		
+		<style type="text/css">
+			body {
+				margin-top: 60px;
+			}
+		</style>
 		<link rel="stylesheet" type="text/css" href="css/header.css"/>
 		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
 		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
@@ -32,7 +36,7 @@
 	</script>
 	<body>
 		<!--导航栏部分开始-->
-		<nav class="navbar navbar-default navbar-inverse">
+		<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#">科技宅<sup>TM</sup>博客论坛</a>

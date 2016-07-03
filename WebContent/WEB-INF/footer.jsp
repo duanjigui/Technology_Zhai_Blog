@@ -10,7 +10,7 @@
 	<!--footer部分开始-->
 	<div class="footer">
 		<span class="footer-content">Copyright ©2016 剑心工作室 Version
-			1.0.0</span>
+			1.1.9</span>
 	</div>
 	<!--footer部分结束-->
 </body>

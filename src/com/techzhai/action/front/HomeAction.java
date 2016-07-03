@@ -85,6 +85,7 @@ public class HomeAction extends ActionSupport {
 		//文章实体
 		ArticleBean articleBean = articleDaoImpl.fetchArticleById(Integer.valueOf(w_id));
 		
+		articleDaoImpl.addReadTime(Integer.valueOf(w_id));
 		HttpSession session = request.getSession();
 		session.setAttribute("articleBean", articleBean);	
 		
