@@ -8,8 +8,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.junit.Test;
 import org.springframework.stereotype.Repository;
 
+import com.techzhai.model.ArticleBean;
 import com.techzhai.model.ArticleTypeBean;
 import com.techzhai.utils.Hibernate4Utils;
 /**
@@ -31,6 +33,18 @@ public class ArticleTypeDaoImpl implements ArticleTypeDao {
 		session.close();
 		return list;
 	}
+	
+
+	public List<ArticleTypeBean> fetchArticleTypeRecommend() {
+		sessionFactory=	Hibernate4Utils.getSessionFactory();
+		Session session=	sessionFactory.openSession();
+		Query query=	session.createQuery("from ArticleTypeBean where t_id<5");
+		@SuppressWarnings("unchecked")
+		List<ArticleTypeBean> list = (List<ArticleTypeBean>)	query.list();
+		session.close();
+		return list;
+	}
+	
 	@Override
 	public String fetchArticeTypeById(int type_id) {
 		sessionFactory=	Hibernate4Utils.getSessionFactory();
@@ -73,4 +87,5 @@ public class ArticleTypeDaoImpl implements ArticleTypeDao {
 		session.close();
 		return "success";
 	}
+	
 }
