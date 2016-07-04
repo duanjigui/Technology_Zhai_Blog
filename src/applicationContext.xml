@@ -22,7 +22,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/techzhaiblog" />
 		<property name="username" value="root" />
-		<property name="password" value="root" />
+		<property name="password" value="1101971076" />
 	</bean>
 	<!-- 定义Hibernate的会话工厂 -->
 	<bean id="sessionFactory"

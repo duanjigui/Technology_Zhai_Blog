@@ -7,28 +7,26 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	//获取某一个类型下的文章列表
-	List<ArticleBean> articleBeans = (List<ArticleBean>)session.getAttribute("articleBeansByT_id");
-	//获取文章类型id
-	int articletypeId=articleBeans.get(0).getW_articletype();
-	
-	ArticleTypeDao articleTypeDao=new ArticleTypeDaoImpl();
-	
-	UserDao userDao=new UserDaoImpl();
-	
-	
-	String type=articleTypeDao.fetchArticeTypeById(articletypeId);
-
-%>    
+   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<jsp:include page="header.jsp"></jsp:include>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%
+	//获取某一个类型下的文章列表
+	List<ArticleBean> articleBeans = (List<ArticleBean>)session.getAttribute("articleBeansByT_id");
+	if(articleBeans!=null&&articleBeans.size()>0){
+		//获取文章类型id
+		int articletypeId=articleBeans.get(0).getW_articletype();
+		 ArticleTypeDao articleTypeDao=new ArticleTypeDaoImpl();
+		 String type=articleTypeDao.fetchArticeTypeById(articletypeId);
+		 UserDao userDao=new UserDaoImpl();
+%> 
 <title><%=type%>版块文章列表</title>
 		<link rel="stylesheet" type="text/css" href="css/article-list.css" />
 </head>
-<jsp:include page="header.jsp"></jsp:include>
+
 <body>
 	<!--文章列表模块-->
 		<div class="aritcle-block">
@@ -102,7 +100,12 @@
 		</div>
 		</div>
 		<!--文章列表结束-->
-
+		<%
+		
+		}else{
+		%>
+			<div align="center"><font color="red">sorry! &nbsp;该分类下暂时没有文章</font><br/><a href="home">返回主页</a></div>	
+		<% }%>
 		<!--50px占位符-->
 		<div class="blank-content">
 
