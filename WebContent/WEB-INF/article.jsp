@@ -85,14 +85,8 @@
 		</div>
 
 		<!--footer部分开始-->
-		<div class="footer">
-			<span class="footer-content">Copyright ©2016 剑心工作室 Version 1.0.0</span>
-		</div>
+		<jsp:include page="footer.jsp"></jsp:include>
 		<!--footer部分结束-->
-		<div class="publish-article">
-			<a href="homedelopypage"><span class="glyphicon glyphicon-pencil"></span></a>
-		</div>
-
 	</body>
 
 </html>
