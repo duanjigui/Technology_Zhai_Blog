@@ -104,7 +104,7 @@
 		
 		}else{
 		%>
-			<div align="center"><font color="red">sorry! &nbsp;该分类下暂时没有文章</font><br/><a href="home">返回主页</a></div>	
+			<div align="center"><font color="red">sorry! &nbsp;该分类下暂时没有文章</font><br/><button class="btn btn-warning btn-lg"><a href="home">返回主页</a></button></div>	
 		<% }%>
 		<!--50px占位符-->
 		<div class="blank-content">

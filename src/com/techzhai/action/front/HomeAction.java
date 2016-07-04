@@ -1,18 +1,23 @@
 package com.techzhai.action.front;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.techzhai.dao.ArticleDaoImpl;
 import com.techzhai.dao.ArticleTypeDaoImpl;
 import com.techzhai.model.ArticleBean;
 import com.techzhai.model.ArticleTypeBean;
+import com.techzhai.model.UserBean;
 import com.techzhai.service.UserService;
 /**
  * 主页路由action
@@ -79,15 +84,20 @@ public class HomeAction extends ActionSupport {
 		String w_id = request.getParameter("w_id"); 
 		//文章实体
 		ArticleBean articleBean = articleDaoImpl.fetchArticleById(Integer.valueOf(w_id));
-		
-		List<ArticleBean> articleBeansByT_id = articleDaoImpl.fetchArticelistByTypeId(Integer.valueOf(articleBean.getW_articletype()));
-		
+
+		articleDaoImpl.addReadTime(Integer.valueOf(w_id));
 		HttpSession session = request.getSession();
-		session.setAttribute("articleBeansByT_id", articleBeansByT_id);	
-		
 		session.setAttribute("articleBean", articleBean);	
-		
+		/**
+		 * 修复首次加载不能记载内容bug
+		 * 首次加载就获取文章
+		 */
+		List<ArticleBean> articleBeansByT_id = articleDaoImpl.fetchArticelistByTypeId(Integer.valueOf(articleBean.getW_articletype()));
+
+		session.setAttribute("articleBeansByT_id", articleBeansByT_id);	
+
 		return "showarticlebyid";
+
 	}
 	//文章展示路由
 	public String showarticle() {

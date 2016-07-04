@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.techzhai.model.ArticleBean;
+import com.techzhai.model.UserBean;
 import com.techzhai.utils.Hibernate4Utils;
 /**
  * 文章处理部分的dao
@@ -54,7 +55,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	public List<ArticleBean> fetchArticleRecommend() {
 		Session session=sessionFactory.openSession();
 		//Session session = Hibernate4Utils.getSessionFactory().openSession();
-		Query query=session.createQuery("from ArticleBean where w_id<10 order by w_id desc");
+		Query query=session.createQuery("from ArticleBean where w_id<13 order by w_id desc");
 		@SuppressWarnings("unchecked")
 		List<ArticleBean> list=(List<ArticleBean>)query.list();
 		session.close();
@@ -114,7 +115,27 @@ public class ArticleDaoImpl implements ArticleDao {
 			return articleBeans;
 		}
 		
+		//增加阅读次数
+		
+		public void addReadTime(Integer w_id) {
+			sessionFactory=	Hibernate4Utils.getSessionFactory();
+			Session session=	sessionFactory.openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			//获取当前的文章阅读次数
+			ArticleBean articleBean = (ArticleBean) session.get(ArticleBean.class, w_id);
+			Integer currendReadTime = articleBean.getW_readnum();
+			//更新状态为拉黑
+			articleBean.setW_readnum(currendReadTime + 1);
+			session.update(articleBean);
+			//关闭事务
+			transaction.commit();
+			
+			session.close();
+		}
+		
 		public static void main(String[] args) {
 			System.out.println(new ArticleDaoImpl().fetchArticelistByTypeId(1).size());
+			new ArticleDaoImpl().addReadTime(6);
 		}
 }
